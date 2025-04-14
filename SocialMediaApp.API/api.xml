@@ -1,0 +1,447 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SocialMediaApp.API</name>
+    </assembly>
+    <members>
+        <member name="T:SocialMediaApp.API.Controllers.AccountController">
+            <summary>
+            Controller for managing user account operations such as registration, login, role assignment, token refreshing, and token revocation.
+            </summary>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.AccountController.#ctor(SocialMediaApp.Core.ServicesContract.IAuthenticationServices,SocialMediaApp.Core.ServicesContract.IMailingService,Microsoft.AspNetCore.Identity.UserManager{SocialMediaApp.Core.Domain.IdentityEntites.ApplicationUser})">
+            <summary>
+            Initializes a new instance of the <see cref="T:SocialMediaApp.API.Controllers.AccountController"/> class.
+            </summary>
+            <param name="authenticationServices">The authentication services.</param>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.AccountController.RegisterAsync(SocialMediaApp.Core.DTO.AuthenticationDTO.RegisterDTO)">
+            <summary>
+            Registers a new user.
+            </summary>
+            <param name="registerDTO">The registration data transfer object containing user details.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/> containing the authentication response.</returns>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.AccountController.LoginAsync(SocialMediaApp.Core.DTO.AuthenticationDTO.LoginDTO)">
+            <summary>
+            Logs in an existing user.
+            </summary>
+            <param name="loginDTO">The login data transfer object containing user credentials.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/> containing the authentication response.</returns>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.AccountController.AddRoleAsync(SocialMediaApp.Core.DTO.AuthenticationDTO.AddRoleDTO)">
+            <summary>
+            Adds a role to an existing user.
+            </summary>
+            <param name="model">The data transfer object containing role and user information.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> indicating the result of the operation.</returns>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.AccountController.RefreshToken">
+            <summary>
+            Refreshes the JWT token using a valid refresh token.
+            </summary>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> containing the new authentication response.</returns>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.AccountController.RevokeToken(SocialMediaApp.Core.DTO.AuthenticationDTO.RevokTokenDTO)">
+            <summary>
+            Revokes a specific refresh token or the one stored in the request cookies.
+            </summary>
+            <param name="revokTokenDTO">The data transfer object containing the token to revoke.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> indicating the result of the revocation.</returns>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.AccountController.ForgotPassword(SocialMediaApp.Core.DTO.AuthenticationDTO.ForgotPasswordDTO)">
+            <summary>
+            Initiates the forgot password process by generating a reset token and sending it to the user's email.
+            </summary>
+            <param name="forgotPassword">The data transfer object containing the user's email and client URI.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> indicating the result of the operation. Returns 200 OK if the email is sent successfully, otherwise returns 400 BadRequest.</returns>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.AccountController.ResetPassword(SocialMediaApp.Core.DTO.AuthenticationDTO.ResetPasswordDTO)">
+            <summary>
+            Resets the user's password using the provided reset token and new password.
+            </summary>
+            <param name="resetPassword">The data transfer object containing the user's email, reset token, and new password.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> indicating the result of the operation. Returns 200 OK if the password is reset successfully, otherwise returns 400 BadRequest with the errors.</returns>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.AccountController.SetRefreshToken(System.String,System.DateTime)">
+            <summary>
+            Sets the refresh token in an HTTP-only cookie.
+            </summary>
+            <param name="refreshToken">The refresh token to store.</param>
+            <param name="expires">The expiration date and time of the refresh token.</param>
+        </member>
+        <member name="T:SocialMediaApp.API.Controllers.CommentController">
+            <summary>
+            Controller for managing comments on tweets.
+            </summary>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.CommentController.#ctor(SocialMediaApp.Core.ServicesContract.ICommentServices,Microsoft.Extensions.Logging.ILogger{SocialMediaApp.API.Controllers.CommentController})">
+            <summary>
+            Initializes a new instance of the <see cref="T:SocialMediaApp.API.Controllers.CommentController"/> class.
+            </summary>
+            <param name="commentServices">The comment services.</param>
+            <param name="logger">The logger instance for logging.</param>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.CommentController.CreateComment(SocialMediaApp.Core.DTO.CommentDTO.CommentAddRequest)">
+            <summary>
+            Creates a new comment.
+            </summary>
+            <param name="commentAdd">The comment details to be added.</param>
+            <returns>An API response indicating success or failure.</returns>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.CommentController.GetComments(System.Int32,System.Int32)">
+            <summary>
+            Retrieves comments with pagination.
+            </summary>
+            <param name="pageIndex">The index of the page to retrieve (default is 1).</param>
+            <param name="pageSize">The number of comments per page (default is 5).</param>
+            <returns>An API response containing the list of comments.</returns>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.CommentController.GetCommentsForTweet(System.Guid)">
+            <summary>
+            Retrieves comments for a specific tweet.
+            </summary>
+            <param name="tweetID">The ID of the tweet.</param>
+            <returns>An API response containing the list of comments for the tweet.</returns>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.CommentController.GetRepliesForComment(System.Guid)">
+            <summary>
+            Retrieves replies for a specific comment.
+            </summary>
+            <param name="commentId">The ID of the comment.</param>
+            <returns>An API response containing the list of replies for the comment.</returns>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.CommentController.GetComment(System.Guid)">
+            <summary>
+            Retrieves a comment by its ID.
+            </summary>
+            <param name="commentId">The ID of the comment.</param>
+            <returns>An API response containing the comment.</returns>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.CommentController.UpdateComment(SocialMediaApp.Core.DTO.CommentDTO.CommentUpdateRequest)">
+            <summary>
+            Updates an existing comment.
+            </summary>
+            <param name="commentUpdate">The updated comment details.</param>
+            <returns>An API response indicating the success of the update operation.</returns>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.CommentController.DeleteComment(System.Guid)">
+            <summary>
+            Deletes a comment by its ID.
+            </summary>
+            <param name="commentID">The ID of the comment to delete.</param>
+            <returns>An API response indicating the success or failure of the delete operation.</returns>
+        </member>
+        <member name="T:SocialMediaApp.API.Controllers.GenreController">
+            <summary>
+            Controller for managing genres.
+            </summary>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.GenreController.#ctor(SocialMediaApp.Core.ServicesContract.IGenreServces,Microsoft.Extensions.Logging.ILogger{SocialMediaApp.API.Controllers.GenreController})">
+            <summary>
+            Initializes a new instance of the <see cref="T:SocialMediaApp.API.Controllers.GenreController"/> class.
+            </summary>
+            <param name="genreServices">The genre services.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.GenreController.GetGenres(System.Int32,System.Int32)">
+            <summary>
+            Gets the genres.
+            </summary>
+            <param name="pageIndex">The page index.</param>
+            <param name="pageSize">The page size.</param>
+            <returns>The list of genres.</returns>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.GenreController.GetGenre(System.Guid)">
+            <summary>
+            Gets a genre by ID.
+            </summary>
+            <param name="id">The ID of the genre.</param>
+            <returns>The genre.</returns>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.GenreController.CreateGenre(SocialMediaApp.Core.DTO.GenreDTO.GenreAddRequest)">
+            <summary>
+            Creates a new genre.
+            </summary>
+            <param name="genreAdd">The genre add request.</param>
+            <returns>The created genre.</returns>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.GenreController.UpdateGenre(SocialMediaApp.Core.DTO.GenreDTO.GenreUpdateRequest)">
+            <summary>
+            Updates an existing genre.
+            </summary>
+            <param name="genreUpdate">The genre update request.</param>
+            <returns>The updated genre.</returns>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.GenreController.DeleteGenre(System.Guid)">
+            <summary>
+            Deletes a genre by ID.
+            </summary>
+            <param name="id">The ID of the genre to delete.</param>
+            <returns>The result of the delete operation.</returns>
+        </member>
+        <member name="T:SocialMediaApp.API.Controllers.LikeController">
+            <summary>
+            Controller for handling likes on tweets and comments.
+            </summary>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.LikeController.#ctor(SocialMediaApp.Core.ServicesContract.ILikeServices,Microsoft.Extensions.Logging.ILogger{SocialMediaApp.API.Controllers.LikeController})">
+            <summary>
+            Initializes a new instance of the <see cref="T:SocialMediaApp.API.Controllers.LikeController"/> class.
+            </summary>
+            <param name="likeServices">The like services.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.LikeController.LikeTweetOrComment(System.Guid)">
+            <summary>
+            Likes a tweet or comment.
+            </summary>
+            <param name="id">The ID of the tweet or comment to like.</param>
+            <returns>The response containing the result of the like operation.</returns>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.LikeController.UnlikeTweetOrComment(System.Guid)">
+            <summary>
+            Unlikes a tweet or comment.
+            </summary>
+            <param name="id">The ID of the tweet or comment to like.</param>
+            <returns>The response containing the result of the unlike operation.</returns>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.LikeController.getLikestweetOrComment(System.Guid)">
+            <summary>
+            Gets the likes for a tweet or comment.
+            </summary>
+            <param name="id">The ID of the tweet or comment to get the likes for.</param>
+            <returns>The response containing the likes for the tweet or comment.</returns>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.LikeController.UserIsLiked(System.Guid)">
+            <summary>
+            Checks if the user has liked a tweet or comment.
+            </summary>
+            <param name="id">The ID of the tweet or comment to check.</param>
+            <returns>The response containing the result of the check.</returns>
+        </member>
+        <member name="T:SocialMediaApp.API.Controllers.NotificationController">
+            <summary>
+            Controller to manage notifications for user profiles.
+            </summary>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.NotificationController.#ctor(SocialMediaApp.Core.ServicesContract.INotificationServices,Microsoft.Extensions.Logging.ILogger{SocialMediaApp.API.Controllers.NotificationController})">
+            <summary>
+            Initializes a new instance of the <see cref="T:SocialMediaApp.API.Controllers.NotificationController"/> class.
+            </summary>
+            <param name="notificationServices">Service to handle notification operations.</param>
+            <param name="logger">Logger instance for logging information.</param>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.NotificationController.GetNotificationsForProfile(System.Guid,System.Int32,System.Int32)">
+            <summary>
+            Retrieves notifications for a specific user profile.
+            </summary>
+            <param name="profileID">The ID of the profile to retrieve notifications for.</param>
+            <param name="pageIndex">The page index for pagination. Default is 1.</param>
+            <param name="pageSize">The number of items per page for pagination. Default is 10.</param>
+            <returns>A list of notifications for the specified profile.</returns>
+            <response code="200">Returns the list of notifications.</response>
+            <response code="500">If an error occurs while retrieving notifications.</response>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.NotificationController.GetNotification(System.Guid)">
+            <summary>
+            Retrieves a specific notification by its ID and mark this notification as readed
+            </summary>
+            <param name="notificationID">The ID of the notification to retrieve.</param>
+            <returns>The notification with the specified ID.</returns>
+            <response code="200">Returns the notification.</response>
+            <response code="404">If the notification is not found.</response>
+            <response code="500">If an error occurs while retrieving the notification.</response>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.NotificationController.DeleteNotification(System.Guid)">
+            <summary>
+            Deletes a specific notification by its ID.
+            </summary>
+            <param name="notificationID">The ID of the notification to delete.</param>
+            <returns>A response indicating whether the deletion was successful.</returns>
+            <response code="200">If the notification is deleted successfully.</response>
+            <response code="404">If the notification is not found.</response>
+            <response code="500">If an error occurs while deleting the notification.</response>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.NotificationController.MarkAllAsRead(System.Guid)">
+            <summary>
+            Marks all notifications as read for a specific user profile.
+            </summary>
+            <param name="profileID">The ID of the profile whose notifications will be marked as read.</param>
+            <returns>A response indicating that all notifications have been marked as read.</returns>
+            <response code="200">If all notifications are marked as read successfully.</response>
+            <response code="500">If an error occurs while marking notifications as read.</response>
+        </member>
+        <member name="T:SocialMediaApp.API.Controllers.ProfileController">
+            <summary>
+            Controller for managing user profiles.
+            </summary>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.ProfileController.CreateProfile(SocialMediaApp.Core.DTO.ProfileDTO.ProfileAddRequest)">
+            <summary>
+            Creates a new profile.
+            </summary>
+            <param name="profileAdd">The profile data.</param>
+            <returns>The created profile.</returns>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.ProfileController.UpdateProfile(SocialMediaApp.Core.DTO.ProfileDTO.ProfileUpdateRequest)">
+            <summary>
+            Updates a profile.
+            </summary>
+            <param name="profileUpdate">The updated profile data.</param>
+            <returns>The updated profile.</returns>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.ProfileController.DeleteProfile(System.Guid)">
+            <summary>
+            Deletes a profile.
+            </summary>
+            <param name="id">The ID of the profile to delete.</param>
+            <returns>The result of the profile deletion.</returns>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.ProfileController.GetProfile(System.Guid)">
+            <summary>
+            Gets a profile by ID.
+            </summary>
+            <param name="id">The ID of the profile to get.</param>
+            <returns>The profile.</returns>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.ProfileController.GetProfileByUserId(System.Guid)">
+            <summary>
+            Gets a profile by user ID.
+            </summary>
+            <param name="userId">The ID of the user.</param>
+            <returns>The profile.</returns>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.ProfileController.GetProfiles(System.Int32,System.Int32)">
+            <summary>
+            Retrieves a paginated list of profiles from the system.
+            </summary>
+            <param name="pageIndex">The index of the page to retrieve. Defaults to 1.</param>
+            <param name="pageSize">The number of profiles per page. Defaults to 10.</param>
+            <returns>
+            An <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/> containing an <see cref="T:SocialMediaApp.Core.DTO.ApiResponse"/> with the status code, success flag, 
+            result containing the list of profiles, and a message indicating the result.
+            </returns>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.UserConnectionsController.#ctor(Microsoft.Extensions.Logging.ILogger{SocialMediaApp.API.Controllers.UserConnectionsController},SocialMediaApp.Core.ServicesContract.IUserConnectionsServices)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SocialMediaApp.API.Controllers.UserConnectionsController"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="userConnectionsServices">The tweet services.</param>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.UserConnectionsController.Follow(System.Guid)">
+            <summary>
+             Make follow to a specific profile.
+            </summary>
+            <param name="followedId">The Id of profile you want to follow.</param>
+            <returns>The Follower profile Id Followed profile Id and creation time.</returns>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.UserConnectionsController.Unfollow(System.Guid)">
+            <summary>
+             Make Unfollow to a specific profile.
+            </summary>
+            <param name="UnfollowedId">The Id of profile you want to Unfollow.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.UserConnectionsController.GetAllFollowing(System.Guid,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+             Get All Following to a specific profile.
+            </summary>
+            <param name="profileId">The Id of profile you want to get all following.</param>
+            <returns>The All Following with FullName , username , bio , profileImg</returns>
+        </member>
+        <member name="M:SocialMediaApp.API.Controllers.UserConnectionsController.GetAllFollowers(System.Guid,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+             Get All Followers to a specific profile.
+            </summary>
+            <param name="profileId">The Id of profile you want to get all followers.</param>
+            <returns>The All Followers with FullName , username , bio , profileImg</returns>
+        </member>
+        <member name="T:SocialMediaApp.API.FileServices.FileService">
+            <summary>
+            Provides file-related services for the application.
+            </summary>
+        </member>
+        <member name="M:SocialMediaApp.API.FileServices.FileService.#ctor(Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SocialMediaApp.API.FileServices.FileService"/> class.
+            </summary>
+            <param name="environment">The web host environment.</param>
+            <param name="httpContextAccessor">The HTTP context accessor.</param>
+        </member>
+        <member name="M:SocialMediaApp.API.FileServices.FileService.CreateFile(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Creates a new file in the "Upload" directory.
+            </summary>
+            <param name="file">The file to be created.</param>
+            <returns>The URL of the created file.</returns>
+        </member>
+        <member name="M:SocialMediaApp.API.FileServices.FileService.DeleteFile(System.String)">
+            <summary>
+            Deletes a file from the "Upload" directory.
+            </summary>
+            <param name="imageUrl">The URL of the file to be deleted.</param>
+        </member>
+        <member name="M:SocialMediaApp.API.FileServices.FileService.UpdateFile(Microsoft.AspNetCore.Http.IFormFile,System.String)">
+            <summary>
+            Updates a file in the "Upload" directory.
+            </summary>
+            <param name="newFile">The new file to be updated.</param>
+            <param name="currentFileName">The URL of the current file to be replaced.</param>
+            <returns>The URL of the updated file.</returns>
+        </member>
+        <member name="M:TweetController.#ctor(SocialMediaApp.Core.ServicesContract.ITweetServices,Microsoft.Extensions.Logging.ILogger{TweetController})">
+            <summary>
+            Initializes a new instance of the <see cref="T:TweetController"/> class.
+            </summary>
+            <param name="tweetServices">The tweet services.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:TweetController.CreateTweet(SocialMediaApp.Core.DTO.TweetDTO.TweetAddRequest)">
+            <summary>
+            Creates a new tweet.
+            </summary>
+            <param name="tweetAddRequest">The tweet add request.</param>
+            <returns>The created tweet.</returns>
+        </member>
+        <member name="M:TweetController.UpdateTweet(SocialMediaApp.Core.DTO.TweetDTO.TweetUpdateRequest)">
+            <summary>
+            Updates an existing tweet.
+            </summary>
+            <param name="tweetUpdateRequest">The tweet update request.</param>
+            <returns>The updated tweet.</returns>
+        </member>
+        <member name="M:TweetController.DeleteTweet(System.Guid)">
+            <summary>
+            Deletes a tweet.
+            </summary>
+            <param name="tweetID">The ID of the tweet to delete.</param>
+            <returns>The result of the tweet deletion.</returns>
+        </member>
+        <member name="M:TweetController.GetTweets(System.Int32,System.Int32)">
+            <summary>
+            Gets a list of tweets.
+            </summary>
+            <param name="pageIndex">The page index.</param>
+            <param name="pageSize">The page size.</param>
+            <returns>The list of tweets.</returns>
+        </member>
+        <member name="M:TweetController.GetTweet(System.Guid)">
+            <summary>
+            Gets a tweet by ID.
+            </summary>
+            <param name="tweetID">The ID of the tweet.</param>
+            <returns>The tweet.</returns>
+        </member>
+        <member name="M:TweetController.GetTweetsForSpecificProfile(System.Guid,System.Int32,System.Int32)">
+            <summary>
+            Gets tweets for a specific profile.
+            </summary>
+            <param name="profileID">The ID of the profile.</param>
+            <param name="pageIndex">The page index.</param>
+            <param name="pageSize">The page size.</param>
+            <returns>The list of tweets for the specific profile.</returns>
+        </member>
+    </members>
+</doc>
