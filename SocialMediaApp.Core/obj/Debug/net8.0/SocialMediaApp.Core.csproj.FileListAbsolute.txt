@@ -1,0 +1,13 @@
+C:\Users\Monster\Desktop\Github\SocialMedia-API\SocialMedia-API\SocialMediaApp.Core\bin\Debug\net8.0\SocialMediaApp.Core.deps.json
+C:\Users\Monster\Desktop\Github\SocialMedia-API\SocialMedia-API\SocialMediaApp.Core\bin\Debug\net8.0\SocialMediaApp.Core.dll
+C:\Users\Monster\Desktop\Github\SocialMedia-API\SocialMedia-API\SocialMediaApp.Core\bin\Debug\net8.0\SocialMediaApp.Core.pdb
+C:\Users\Monster\Desktop\Github\SocialMedia-API\SocialMedia-API\SocialMediaApp.Core\obj\Debug\net8.0\SocialMediaApp.Core.csproj.AssemblyReference.cache
+C:\Users\Monster\Desktop\Github\SocialMedia-API\SocialMedia-API\SocialMediaApp.Core\obj\Debug\net8.0\SocialMediaApp.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Monster\Desktop\Github\SocialMedia-API\SocialMedia-API\SocialMediaApp.Core\obj\Debug\net8.0\SocialMediaApp.Core.AssemblyInfoInputs.cache
+C:\Users\Monster\Desktop\Github\SocialMedia-API\SocialMedia-API\SocialMediaApp.Core\obj\Debug\net8.0\SocialMediaApp.Core.AssemblyInfo.cs
+C:\Users\Monster\Desktop\Github\SocialMedia-API\SocialMedia-API\SocialMediaApp.Core\obj\Debug\net8.0\SocialMediaApp.Core.csproj.CoreCompileInputs.cache
+C:\Users\Monster\Desktop\Github\SocialMedia-API\SocialMedia-API\SocialMediaApp.Core\obj\Debug\net8.0\SocialMediaApp.Core.sourcelink.json
+C:\Users\Monster\Desktop\Github\SocialMedia-API\SocialMedia-API\SocialMediaApp.Core\obj\Debug\net8.0\SocialMediaApp.Core.dll
+C:\Users\Monster\Desktop\Github\SocialMedia-API\SocialMedia-API\SocialMediaApp.Core\obj\Debug\net8.0\refint\SocialMediaApp.Core.dll
+C:\Users\Monster\Desktop\Github\SocialMedia-API\SocialMedia-API\SocialMediaApp.Core\obj\Debug\net8.0\SocialMediaApp.Core.pdb
+C:\Users\Monster\Desktop\Github\SocialMedia-API\SocialMedia-API\SocialMediaApp.Core\obj\Debug\net8.0\ref\SocialMediaApp.Core.dll

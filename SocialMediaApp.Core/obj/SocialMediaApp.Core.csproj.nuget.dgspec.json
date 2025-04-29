@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Monster\\Desktop\\SocialMedia-API-master\\SocialMedia-API-master\\SocialMediaApp.Core\\SocialMediaApp.Core.csproj": {}
+    "C:\\Users\\Monster\\Desktop\\Github\\SocialMedia-API\\SocialMedia-API\\SocialMediaApp.Core\\SocialMediaApp.Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Monster\\Desktop\\SocialMedia-API-master\\SocialMedia-API-master\\SocialMediaApp.Core\\SocialMediaApp.Core.csproj": {
+    "C:\\Users\\Monster\\Desktop\\Github\\SocialMedia-API\\SocialMedia-API\\SocialMediaApp.Core\\SocialMediaApp.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Monster\\Desktop\\SocialMedia-API-master\\SocialMedia-API-master\\SocialMediaApp.Core\\SocialMediaApp.Core.csproj",
+        "projectUniqueName": "C:\\Users\\Monster\\Desktop\\Github\\SocialMedia-API\\SocialMedia-API\\SocialMediaApp.Core\\SocialMediaApp.Core.csproj",
         "projectName": "SocialMediaApp.Core",
-        "projectPath": "C:\\Users\\Monster\\Desktop\\SocialMedia-API-master\\SocialMedia-API-master\\SocialMediaApp.Core\\SocialMediaApp.Core.csproj",
+        "projectPath": "C:\\Users\\Monster\\Desktop\\Github\\SocialMedia-API\\SocialMedia-API\\SocialMediaApp.Core\\SocialMediaApp.Core.csproj",
         "packagesPath": "C:\\Users\\Monster\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Monster\\Desktop\\SocialMedia-API-master\\SocialMedia-API-master\\SocialMediaApp.Core\\obj\\",
+        "outputPath": "C:\\Users\\Monster\\Desktop\\Github\\SocialMedia-API\\SocialMedia-API\\SocialMediaApp.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Monster\\AppData\\Roaming\\NuGet\\NuGet.Config",

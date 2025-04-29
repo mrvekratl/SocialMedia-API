@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lByxW66J2NY=",
+  "dgSpecHash": "jZWabVVm3eA=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Monster\\Desktop\\SocialMedia-API-master\\SocialMedia-API-master\\SocialMediaApp.Infrastructure\\SocialMediaApp.Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\Monster\\Desktop\\Github\\SocialMedia-API\\SocialMedia-API\\SocialMediaApp.Infrastructure\\SocialMediaApp.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Monster\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Monster\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
